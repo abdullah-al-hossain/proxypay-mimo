@@ -3,8 +3,8 @@
 @section('content')
     <div class="cls-content-sm panel">
         <div class="panel-body">
-            <h1 class="h3">{{ __('Reset Password') }}</h1>
-            <p class="pad-btm">{{__('Enter your phone, code and new password and confirm password.')}} </p>
+            <h1 class="h3">{{ translate('Reset Password') }}</h1>
+            <p class="pad-btm">{{translate('Enter your phone, code and new password and confirm password.')}} </p>
             <form method="POST" action="{{ route('password.update.phone') }}">
                 @csrf
 
@@ -44,7 +44,7 @@
 
                 <div class="form-group text-right">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">
-                        {{ __('Reset Password') }}
+                        {{ translate('Reset Password') }}
                     </button>
                 </div>
             </form>

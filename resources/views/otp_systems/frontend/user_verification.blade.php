@@ -9,10 +9,10 @@
                         <div class="card">
                             <div class="text-center px-35 pt-5">
                                 <h3 class="heading heading-4 strong-500">
-                                    {{__('Phone Verification')}}
+                                    {{translate('Phone Verification')}}
                                 </h3>
                                 <p>Verification code has been sent. Please wait a few minutes.</p>
-                                <a href="{{ route('verification.phone.resend') }}">{{__('Resend Code')}}</a>
+                                <a href="{{ route('verification.phone.resend') }}">{{translate('Resend Code')}}</a>
                             </div>
                             <div class="px-5 py-lg-5">
                                 <div class="row align-items-center">
@@ -20,7 +20,6 @@
                                         <form class="form-default" role="form" action="{{ route('verification.submit') }}" method="POST">
                                             @csrf
                                             <div class="form-group">
-                                                <!-- <label>{{ __('name') }}</label> -->
                                                 <div class="input-group input-group--style-1">
                                                     <input type="text" class="form-control" name="verification_code">
                                                     <span class="input-group-addon">
@@ -31,7 +30,7 @@
 
                                             <div class="row align-items-center">
                                                 <div class="col-12 text-right">
-                                                    <button type="submit" class="btn btn-styled btn-base-1 w-100 btn-md">{{ __('Verify') }}</button>
+                                                    <button type="submit" class="btn btn-styled btn-base-1 w-100 btn-md">{{ translate('Verify') }}</button>
                                                 </div>
                                             </div>
                                         </form>

@@ -28,7 +28,7 @@ class SmsController extends Controller
             sendSMS($phone, env('APP_NAME'), $request->content);
         }
 
-    	flash(__('SMS has been sent.'))->success();
+    	flash(translate('SMS has been sent.'))->success();
     	return redirect()->route('admin.dashboard');
     }
 }
