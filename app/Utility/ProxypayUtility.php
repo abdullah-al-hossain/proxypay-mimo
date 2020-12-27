@@ -2,6 +2,8 @@
 
 namespace App\Utility;
 
+use App\BusinessSetting;
+
 class ProxypayUtility
 {
     public static function generate_reference_number()
@@ -13,9 +15,14 @@ class ProxypayUtility
             "Accept: application/vnd.proxypay.v2+json",
         ];
 
+        $url = "https://api.proxypay.co.ao/reference_ids";
+
+        if(BusinessSetting::where('type', 'proxypay_sandbox')->first()->value == 1) {
+            $url = "https://api.sandbox.proxypay.co.ao/reference_ids";
+        }
         
         $opts = [
-            CURLOPT_URL             => "https://api.sandbox.proxypay.co.ao/reference_ids",
+            CURLOPT_URL             => $url,
             CURLOPT_CUSTOMREQUEST   => "POST",
             CURLOPT_HTTP_VERSION    => CURL_HTTP_VERSION_1_1,
             CURLOPT_RETURNTRANSFER  => true,
@@ -41,6 +48,13 @@ class ProxypayUtility
 
     public static function create_reference($reference_number, $amount, $order_code) 
     {
+
+        $url = "https://api.proxypay.co.ao/reference_ids";
+
+        if(BusinessSetting::where('type', 'proxypay_sandbox')->first()->value == 1) {
+            $url = "https://api.sandbox.proxypay.co.ao/reference_ids";
+        }
+        
         $reference = [
             "amount"        => $amount,
             "end_datetime"  => "2021-01-21",
