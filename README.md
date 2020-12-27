@@ -1,2 +1,1 @@
-# proxypay-mimo
- Proxypay is an african payment gateway and Mimo is an OTP service of Africa
+A complete solution for E-commerce Business with exclusive features & super responsive layout

@@ -1,0 +1,14 @@
+Hello,
+
+We've changed full structure of active ecommerce CMS. If you're already using active ecommerce CMS please follow below instrcustions.
+
+-- make sure backup your database from your phpmyadmin.
+-- if you're using any addon, update those addons after after updating active ecommerce CMS
+-- go to admin panel > website setup > header and update your logo
+-- go to admin panel > website setup > footer and update footer information
+-- Please translate again if you are using other languages than english. 
+
+if you face any issue after update contact us via our support center.
+http://support.activeitzone.com
+
+Thnak you
