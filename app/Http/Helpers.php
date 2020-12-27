@@ -11,6 +11,7 @@ use App\Upload;
 use App\Translation;
 use App\Utility\TranslationUtility;
 use App\Utility\CategoryUtility;
+use App\Utility\MimoUtility;
 use Twilio\Rest\Client;
 
 
@@ -126,33 +127,11 @@ if (! function_exists('sendSMS')) {
 
             return $response;
         } elseif(OtpConfiguration::where('type', 'mimo')->first()->value == 1) {
-            $curl = curl_init();
-
-            $fields = array(
-                "sender" => env("MIMO_SENDER_ID"),
-                "text" => $text,
-                "recipients" => $to
-            );
-            // dd($to);
-            curl_setopt_array($curl, array(
-                CURLOPT_URL => '52.30.114.86:8080/mimosms/v1/message/send?token=6ca762dcf11832f5b49713a6e56b4a15923660125',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => json_encode($fields),
-                CURLOPT_HTTPHEADER => array(
-                    'Content-Type: application/json'
-                ),
-            ));
-
-            $response = curl_exec($curl);
-            // dd($response);
-
-            curl_close($curl);
+            $token = MimoUtility::getToken();
+            // dd('Token is:'.$token);            
+            MimoUtility::sendMessage($text, $to, $token);
+            MimoUtility::logout($token);           
+            // dd('hello');
         }
     }
 }
